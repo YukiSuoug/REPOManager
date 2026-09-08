@@ -1,0 +1,247 @@
+@import "tailwindcss";
+
+body {
+  background-color: #000000;
+}
+
+/* ===== 自带动画(不依赖 tailwindcss-animate 插件) ===== */
+
+/* Toast 入场:右侧滑入 + 缩放 */
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateX(28px) scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* Toast 退场:右移淡出 */
+@keyframes toast-out {
+  from {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(28px) scale(0.94);
+  }
+}
+
+/* 底部悬浮栏入场:从底部升起 */
+@keyframes bar-in {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Toast 生命周期进度条 */
+@keyframes toast-progress {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+/* 勾选弹跳 */
+@keyframes checkpop {
+  0% {
+    transform: scale(0.3);
+  }
+  60% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 图标弹跳 */
+@keyframes icon-pop {
+  0% {
+    transform: scale(0.5);
+  }
+  60% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.toast-in {
+  animation: toast-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* 弹窗遮罩淡入 */
+@keyframes overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* 弹窗遮罩淡出 */
+@keyframes overlay-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* 弹窗面板入场:缩放 + 上浮 */
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* 弹窗面板退场:缩小下沉 */
+@keyframes modal-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+}
+
+.overlay-in {
+  animation: overlay-in 0.2s ease-out both;
+}
+
+.overlay-out {
+  animation: overlay-out 0.18s ease-in both;
+}
+
+.modal-in {
+  animation: modal-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.modal-out {
+  animation: modal-out 0.18s ease-in both;
+}
+
+/* ===== 交互满足感动效 ===== */
+
+/* 按钮点击弹跳 */
+@keyframes pop-bounce {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.15) rotate(-2deg);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 点击发光涟漪(扩散并淡出) */
+@keyframes btn-ripple {
+  0% {
+    box-shadow: 0 0 0 0 var(--ripple-color, rgba(52, 211, 153, 0.55));
+  }
+  100% {
+    box-shadow: 0 0 0 26px transparent;
+  }
+}
+
+/* 运行/加载中持续脉冲发光 */
+@keyframes pulse-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 8px 2px rgba(6, 182, 212, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 22px 6px rgba(6, 182, 212, 0.65);
+  }
+}
+
+/* 成功光环:由内向外交替扩散两圈 */
+@keyframes success-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55);
+  }
+  60% {
+    box-shadow: 0 0 0 18px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 30px transparent;
+  }
+}
+
+/* 粒子爆发:沿 --dx/--dy 飞散并缩小淡出 */
+@keyframes burst-fly {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--dx, 0), var(--dy, 0)) scale(0);
+    opacity: 0;
+  }
+}
+
+.pop-bounce {
+  animation: pop-bounce 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.btn-ripple {
+  animation: btn-ripple 0.5s ease-out forwards;
+}
+
+.pulse-glow {
+  animation: pulse-glow 1.2s ease-in-out infinite;
+}
+
+.success-ring {
+  animation: success-ring 0.7s ease-out forwards;
+}
+
+.burst-dot {
+  animation: burst-fly 0.65s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.toast-out {
+  animation: toast-out 0.25s ease-in both;
+}
+
+.bar-in {
+  animation: bar-in 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.toast-progress {
+  animation: toast-progress 3.2s linear forwards;
+}
+
+.check-pop {
+  animation: checkpop 0.18s ease-out both;
+}
+
+.icon-pop {
+  animation: icon-pop 0.25s cubic-bezier(0.22, 1, 0.36, 1) both;
+}

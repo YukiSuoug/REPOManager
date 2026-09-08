@@ -1,0 +1,28 @@
+[package]
+name = "repo-mod-manager"
+version = "1.4.2"
+description = "R.E.P.O. 便携版 Mod 管理器"
+authors = ["REPO Mod Manager"]
+edition = "2021"
+
+[lib]
+name = "repo_mod_manager_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }
+tauri-plugin-dialog = "2"
+tauri-plugin-single-instance = "2"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+dunce = "1"
+zip = "2"
+base64 = "0.22"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls", "stream", "blocking"] }
+semver = "1"
+
+[target.'cfg(windows)'.dependencies]
+winreg = "0.52"
